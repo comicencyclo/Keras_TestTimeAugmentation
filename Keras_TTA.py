@@ -71,7 +71,7 @@ class Keras_TTA():
             score7 = model.predict(img7)
             arrlist.append(score7)
         fin_arr = np.array(arrlist)
-        score = fin_arr.sum(0)/ctr
+        score = fin_arr.sum(0)/predctr
         return score
             
 
