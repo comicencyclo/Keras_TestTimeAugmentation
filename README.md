@@ -7,8 +7,7 @@ The purpose of this repository is to provide Test Time Augmentation abilities to
         use_origimg: Set to 'True' if you want the predictions of original image in the TTA calculation
         fliplr     : Set to 'True' if you want the prediction of left-to-right flipped version of original image in TTA calculation
         flipud     : Set to 'True' if you want the prediction of upside down flipped version of original image in TTA calculation
-        rotate30   : Set to 'True' if you want the prediction of 30 degree rotated version of original image in TTA calculation
-        rotate45   : Set to 'True' if you want the prediction of 45 degree rotated version of original image in TTA calculation
+        rotate     : Provide degrees e.g. 30 for which the image needs to be rotated in TTA calculation
         gaussian_blur: Set to 'True' if you want the prediction of gaussian blur version of original image in TTA calculation
         preserve_edge: Set to 'True' if you want the prediction of edge preserved version of original image in TTA calculation
         
