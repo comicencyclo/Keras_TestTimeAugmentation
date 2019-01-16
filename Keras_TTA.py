@@ -27,7 +27,6 @@ class Keras_TTA():
         self.use_origimg = use_origimg
         self.fliplr = fliplr
         self.flipud = flipud
-        self.rotate = rotate
         self.gaussian_blur = gaussian_blur
         self.preserve_edge = preserve_edge
     
