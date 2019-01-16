@@ -12,6 +12,6 @@ The purpose of this repository is to provide Test Time Augmentation abilities to
         preserve_edge: Set to 'True' if you want the prediction of edge preserved version of original image in TTA calculation
         
     Example:
-        tta_mod = Keras_TTA(model,use_origimg=True,fliplr=True,flipud =True,rotate30=True,rotate45=True,gaussian_blur=True,preserve_edge=True)
+        tta_mod = Keras_TTA(model,use_origimg=True,fliplr=True,flipud =True,rotate=30,gaussian_blur=True,preserve_edge=True)
         predictions = tta_mod.predict(image)
     """
