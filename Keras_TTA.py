@@ -22,11 +22,12 @@ class Keras_TTA():
         tta_mod = Keras_TTA(model,use_origimg=True,fliplr=True,flipud =True,rotate30=True,rotate45=True,gaussian_blur=True,preserve_edge=True)
         predictions = tta_mod.predict(image)
     """
-    def __init__(self,model,use_origimg=False,conv_greyscale=False,fliplr=False,flipud =False,rotate=None,gaussian_blur=False,preserve_edge=False):
+    def __init__(self,model,use_origimg=False,fliplr=False,flipud =False,rotate=None,gaussian_blur=False,preserve_edge=False):
         self.model=model
         self.use_origimg = use_origimg
         self.fliplr = fliplr
         self.flipud = flipud
+        self.rotate = rotate
         self.gaussian_blur = gaussian_blur
         self.preserve_edge = preserve_edge
     
