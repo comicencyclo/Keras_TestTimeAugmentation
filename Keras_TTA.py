@@ -14,7 +14,7 @@ class Keras_TTA():
         use_origimg: Set to 'True' if you want the predictions of original image in the TTA calculation
         fliplr     : Set to 'True' if you want the prediction of left-to-right flipped version of original image in TTA calculation
         flipud     : Set to 'True' if you want the prediction of upside down flipped version of original image in TTA calculation
-        rotate     : Provide degrees e.g. 30 for which the image needs to be rotated in TTA calculation
+        rotate     : Provide degrees e.g. 30 for which the image needs to be rotated in TTA calculation. Default value is None
         gaussian_blur: Set to 'True' if you want the prediction of gaussian blur version of original image in TTA calculation
         preserve_edge: Set to 'True' if you want the prediction of edge preserved version of original image in TTA calculation
         
@@ -37,37 +37,40 @@ class Keras_TTA():
         arrlist=[]
         if self.use_origimg ==True:
             predctr+=1.0
-            score1 = model.predict(X)
-            arrlist.append(score1)
+            score = model.predict(X)
+            arrlist.append(score)
         if self.fliplr ==True:
             predctr+=1.0
             img2 = np.fliplr(X)
-            score2 = model.predict(img2)
-            arrlist.append(score2)
+            score = model.predict(img2)
+            arrlist.append(score)
         if self.flipud ==True:
             predctr+=1.0
             img3 = np.flipud(X)
-            score3 = model.predict(img3)
-            arrlist.append(score3)
+            score = model.predict(img3)
+            arrlist.append(score)
         if self.rotate != None:
             rot = self.rotate
             predctr+=1.0
             img4 = ndimage.rotate(X,rot,reshape=False)
-            score4= model.predict(img4)
-            arrlist.append(score4)
+            score= model.predict(img4)
+            arrlist.append(score)
         
         if self.gaussian_blur==True:
             predctr +=1.0
             img5 = ndimage.gaussian_filter(X,sigma=3)
-            score5 = model.predict(img5)
-            arrlist.append(score5)
+            score = model.predict(img5)
+            arrlist.append(score)
         if self.preserve_edge==True:
             predctr+=1.0
             img6 = ndimage.median_filter(X,3)
-            score6 = model.predict(img6)
-            arrlist.append(score6)
+            score = model.predict(img6)
+            arrlist.append(score)
         
-        fin_arr = np.array(arrlist)
-        score = fin_arr.sum(0)/predctr
-        return score
-
+        
+        if predctr > 1.0:
+            fin_arr = np.array(arrlist)
+            score_f = fin_arr.sum(0)/predctr
+        elif predctr == 1.0:
+            score_f = score
+        return score_f
